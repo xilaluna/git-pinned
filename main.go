@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/gocolly/colly"
+	"github.com/gocolly/colly/extensions"
 	"github.com/joho/godotenv"
 )
 
@@ -24,7 +25,11 @@ func main() {
 	router.GET("/", func(context *gin.Context) {
 		var repos []Repo
 
-		collector := colly.NewCollector()
+		collector := colly.NewCollector(
+			colly.AllowedDomains("github.com"),
+		)
+		extensions.RandomUserAgent(collector)
+
 		collector.OnHTML(".pinned-item-list-item-content", func(content *colly.HTMLElement) {
 
 			title := content.ChildText("span.repo[title]")
