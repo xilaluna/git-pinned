@@ -38,7 +38,6 @@ func scrape(link string) []Repo {
 func main() {
 	godotenv.Load()
 	router := gin.Default()
-
 	router.GET("/", func(context *gin.Context) {
 		repos := scrape("https://github.com/xilaluna")
 		context.IndentedJSON(http.StatusOK, repos)
@@ -48,6 +47,5 @@ func main() {
 		repos := scrape(link)
 		context.IndentedJSON(http.StatusOK, repos)
 	})
-
 	router.Run("0.0.0.0:" + os.Getenv("PORT"))
 }
