@@ -21,7 +21,7 @@ func main() {
 	godotenv.Load()
 	router := gin.Default()
 
-	router.GET("/ping", func(context *gin.Context) {
+	router.GET("/", func(context *gin.Context) {
 		var repos []Repo
 
 		collector := colly.NewCollector()
