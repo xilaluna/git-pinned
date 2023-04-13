@@ -14,8 +14,10 @@ import (
 type Repo struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
-	Language    string `json:"language"`
 	Link        string `json:"link"`
+	Language    string `json:"language"`
+	Stars       string `json:"stars"`
+	Forks       string `json:"forks"`
 }
 
 func scrape(link string) []Repo {
@@ -27,9 +29,12 @@ func scrape(link string) []Repo {
 	collector.OnHTML(".pinned-item-list-item-content", func(content *colly.HTMLElement) {
 		title := content.ChildText("span.repo[title]")
 		description := content.ChildText("p.pinned-item-desc")
-		language := content.ChildText("span[itemprop=programmingLanguage]")
 		repoLink := fmt.Sprintf("https://github.com%s", content.ChildAttr("a", "href"))
-		repos = append(repos, Repo{Title: title, Description: description, Language: language, Link: repoLink})
+		language := content.ChildText("span[itemprop=programmingLanguage]")
+		stars := content.ChildText(`a[href$="/stargazers"]`)
+		forks := content.ChildText(`a[href$="/forks"]`)
+
+		repos = append(repos, Repo{Title: title, Description: description, Link: repoLink, Language: language, Stars: stars, Forks: forks})
 	})
 	collector.Visit(link)
 	return repos
