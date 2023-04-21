@@ -2,6 +2,17 @@
 
 A simple go scraper that gets all of your pinned repos on GitHub via an API endpoint.
 
+## 📑 About
+
+git-pinned is a simple go scraper that is running on a gin server. It is designed to be used as an API endpoint to get all of your pinned repos on GitHub. It is currently being used on my [portfolio](https://xilaluna.com/projects). I initially made it for this reason, but I figured it would be useful for others as well. Feel free to fork or clone this repo.
+
+## 📚 Stack
+
+- [Go](https://golang.org/)
+- [Gin](https://gin-gonic.com/)
+- [Colly](https://go-colly.org/)
+- [Railway](https://railway.app/)
+
 ## 🧑‍💻 How to Use
 
 The most basic route defaults to my account and gets my pinned repos. Feel free to change this in the `main.go` file.
@@ -34,4 +45,4 @@ In both cases, the response will be a JSON object with the following structure:
 ## 🪪 License
 
 Licensed under the [MIT License](./LICENSE).
-If you use this project, please just give a shout out and link it back to this repo. Thanks!
+If you use this project, please just give the project a star. Thanks!
