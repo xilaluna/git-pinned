@@ -16,6 +16,21 @@ The next api route allows you to enter your username after the slash and fetch t
 api/:username
 ```
 
+In both cases, the response will be a JSON object with the following structure:
+
+```JSON
+[
+    {
+        "title": "repo-name",
+        "description": "repo-description",
+        "link": "repo-link",
+        "language": "repo-language",
+        "stars": "repo-stars",
+        "forks": "repo-forks"
+    },
+]
+```
+
 ## 🪪 License
 
 Licensed under the [MIT License](./LICENSE).
