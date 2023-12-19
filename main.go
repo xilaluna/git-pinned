@@ -27,7 +27,7 @@ func scrape(link string) []Repo {
 	)
 	extensions.RandomUserAgent(collector)
 	collector.OnHTML(".pinned-item-list-item-content", func(content *colly.HTMLElement) {
-		title := content.ChildText("span.repo[title]")
+		title := content.ChildText("span.repo")
 		description := content.ChildText("p.pinned-item-desc")
 		repoLink := fmt.Sprintf("https://github.com%s", content.ChildAttr("a", "href"))
 		language := content.ChildText("span[itemprop=programmingLanguage]")
